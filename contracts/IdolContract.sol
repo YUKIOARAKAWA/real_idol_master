@@ -2,16 +2,28 @@ pragma solidity ^0.4.15;
 
 contract IdolContract {
 
+  uint256 public id;
+
   struct Idol {
-    uint256 public id;
-    string public name;
-    uint256 public max_issuance;
+    string name;
+    uint256 issuance;
   }
 
-  mapping (address => Idol) idols;
-  address[] public idolAccts;
+  mapping (uint256 => Idol) idols;
 
-  function registerIdol(string _name, uint256 _max_issuance) {
+  function setIdol(string _name, uint256 _issuance) public {
+
+    idols[id].name = _name;
+    idols[id].issuance = _issuance;
+
+    id += 1;
+  }
+
+  function getIdol(uint256 _id) constant returns (string, uint256) {
+    return (idols[_id].name, idols[_id].issuance);
+  }
+
+  function registerIdol(string _name, uint256 _issuance) {
 
   }
 
