@@ -28,6 +28,11 @@ contract IdolContract {
   }
 
   function checkIdolExistence(uint256 _id) constant returns (bool) {
-    return true;
+    for (uint i = 0; i <= id - 1; i++) {
+      if (idols[_id].issuance != 0) {
+        return true;
+      }
+    }
+    return false;
   }
 }
