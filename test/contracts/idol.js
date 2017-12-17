@@ -28,4 +28,18 @@ contract('IdolContract', (accounts) => {
     const check_result1 = await idolcontract.checkIdolExistence(notexistence_traget_id);
     assert.strictEqual(check_result1, false, 'Not corrrect result');
   });
+
+  it('should be add new idol information', async function () {
+    const name = "sasakiayaka";
+    const issuance = 1;
+
+    await idolcontract.setIdol(name, issuance);
+    const second_idol = await idolcontract.getIdol(1);
+
+    assert.strictEqual(second_idol[0], name, 'Not correct set name!');
+    assert.strictEqual(second_idol[1].toNumber(), issuance, 'Not correct set issuance!');
+
+    const check_result1 = await idolcontract.checkIdolExistence(1);
+    assert.strictEqual(check_result1, true, 'Not correct result!');
+  });
 });
