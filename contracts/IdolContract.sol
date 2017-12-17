@@ -23,10 +23,6 @@ contract IdolContract {
     return (idols[_id].name, idols[_id].issuance);
   }
 
-  function registerIdol(string _name, uint256 _issuance) {
-
-  }
-
   function checkIdolExistence(uint256 _id) constant returns (bool) {
     for (uint i = 0; i <= id - 1; i++) {
       if (idols[_id].issuance != 0) {
