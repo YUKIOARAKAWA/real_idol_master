@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216140548) do
+ActiveRecord::Schema.define(version: 20171219144954) do
+
+  create_table "draw_idols", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "idol_id"
+    t.string "name"
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idol_id"], name: "index_draw_idols_on_idol_id"
+    t.index ["user_id"], name: "index_draw_idols_on_user_id"
+  end
 
   create_table "idols", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -28,4 +39,6 @@ ActiveRecord::Schema.define(version: 20171216140548) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "draw_idols", "idols"
+  add_foreign_key "draw_idols", "users"
 end
