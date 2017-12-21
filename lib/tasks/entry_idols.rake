@@ -15,5 +15,13 @@ namespace :idols do
           max_issuance: 3
         )
     idol.save
+
+    idol = Idol.new(
+          name: '小松菜奈',
+          img_url: '/idols/komatsu_nana.jpg',
+          max_issuance: 7
+        )
+    idol.save
+
   end
 end
