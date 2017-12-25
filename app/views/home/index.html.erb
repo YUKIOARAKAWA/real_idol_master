@@ -1,5 +1,7 @@
-<%= form_tag('/draw', method: 'post') do %>
-  <div class = 'text-center'>
-    <%= submit_tag 'アイドルくじを引く' %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_tag('/draw', method: 'post') do %>
+    <div class = 'text-center'>
+      <%= submit_tag 'アイドルくじを引く' %>
+    </div>
+  <% end %>
 <% end %>
