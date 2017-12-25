@@ -1,2 +1,4 @@
-<h1><%= "GET! #{@idol.name}"%></h1>
-<%= image_tag "#{@idol.img_url}", size: '500x500'%>
+<h1 class = 'text-center'>
+  <%= "GET! #{@idol.name}"%>
+</h1>
+<%= image_tag @idol.img_url, size: '500x500', class: 'img-responsive center-block'%>

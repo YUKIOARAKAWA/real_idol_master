@@ -1,4 +1,8 @@
-<% @draw_idols.each do |draw_idol| %>
-  <%= draw_idol.name %>
-  <%= image_tag "#{draw_idol.img_url}", size: '50x50' %>
-<% end %>
+<div class = 'row'>
+  <% @draw_idols.each do |draw_idol| %>
+  <div class = 'col-md-3'>
+    <%= draw_idol.name %>
+    <%= image_tag draw_idol.img_url, size: '100x100', class: '' %>
+  </div>
+  <% end %>
+</div>
