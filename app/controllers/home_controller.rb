@@ -6,7 +6,14 @@ class HomeController < ApplicationController
   # アイドルくじを引く
   def draw
     @idol = Idol.get_idol
-    DrawIdol.create_from_idol!(@idol, current_user)
+    smartContract = EthereumAPI.new()
+    contract_result = smartContract.check_idol_issuance(@idol.id, current_user)
+
+    if contract_result == true
+      DrawIdol.create_from_idol!(@idol, current_user)
+    else
+      # TODO: idolの発行枚数が上限に達している場合
+    end
   end
 
   def my_page
