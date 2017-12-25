@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   # アイドルくじを引く
   def draw
     @idol = Idol.get_idol
+    DrawIdol.create_from_idol!(@idol, current_user)
     smartContract = EthereumAPI.new()
     contract_result = smartContract.check_idol_issuance(@idol.id, current_user)
 
